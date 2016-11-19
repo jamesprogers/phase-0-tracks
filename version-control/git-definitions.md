@@ -2,6 +2,7 @@
 
 **Instructions: ** Define each of the following Git concepts.
 
+* This is my teacher tag. You're it!
 * What is version control?  Why is it useful?
 > Version control isolates versions of code by separating the versions into different branch folders in Git.
 > Version control is useful in ensuring that:
