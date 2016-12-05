@@ -1,0 +1,18 @@
+
+
+#octopus {
+  position: fixed;
+  left:500px;
+  top:100px;
+  z-index: -2
+}
+#hat {
+  position: fixed;
+  left:475px;
+  top:45px;
+}
+#glasses {
+  position: fixed;
+  left:540px;
+  top:200px;
+}
