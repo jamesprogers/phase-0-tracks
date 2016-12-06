@@ -1,0 +1,55 @@
+Algorithm for using an elevator ("Elevator Algorithm":
+
+- if ordinal of floor requested to go to is less than current floor or is "B", "L" or "G", if current floor is not "B", press down arrow
+- Otherwise, select up arrow
+- When elevator doors open, enter elevator
+- turn 180 degrees to face door
+- look left and then right up to 90 degrees on either side to identify elevator button panel
+- If required floor is identified with a letter, push the button with that letter.
+- Otherwise, push button on panel that is labeled with the number that corresponds to the ordinal floor you are required to go to. (ex: 2 for 2nd).
+- identify monitor displaying numbers. The numbers will correspond to the ordinal floor the elevator is currently passing.
+- When a) the monitor displays the number the corresponds to the button pressed for your floor and b) the elevator doors open, exit the elevator.
+
+
+Walking the dog:
+
+- place the dog's head through the loop of the leash so the loop sits around the dog's neck
+- take one plastic bag from bureau drawer
+- place plastic bag in back pocket
+- hold leash with left hand at the end of the leash opposite the end around the dog's neck
+- approach apartment door ("Apartment Door"):
+  - unlock apartment door
+  - open apartment door
+  - walk through apartment door
+  - close apartment door
+  - lock apartment door
+- 50 feet and turn left 90 degrees
+- use elevator algorithm above to go to floor "G"
+- once you have exited the elevator, turn left 90 degrees and walk 30 feet to the building door
+- At building door ("Building Door"):
+  - open the building door
+  - hold door open and stand in place as dog walks through the door
+  - walk through the door
+- turn 90 degrees right and walk to the sidewalk corner ("Sidewalk Instruction)")
+  - continue turning 90 degrees and walking to the sidewalk corner until you reach the building door
+- if dog stops, you stop.
+- if dog walks, you continue to proceed with sidewalk instruction
+- if dog poops
+  - remove plastic bag from back pocket
+  - place plastic bag over right hand so hand is completely covered
+  - pick up poop with right hand enclosed in plastic bag
+  - enclose poop in plastic bag
+  - hold plastic bag closed
+  - proceed with sidewalk instruction
+- if you find a trash can
+ - place plastic bag in trash can
+- if you reach building door
+ - proceed with Building Door instruction
+- walk 30 feet and turn right 90 degrees
+- proceed with Elevator Algorithm to 4th Floor
+- turn right and walk 100 feet
+- proceed with Apartment Door
+- remove leash from around dog's head
+- place leash on hook 12 inches to the left of the door
+- end
+
