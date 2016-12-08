@@ -1,0 +1,38 @@
+body {
+  background-image: url("http://mymodernmet.com/wp/wp-content/uploads/archive/3SVSdXInLL8ORNm6uCsk_1065304886.jpeg");
+}
+
+header {
+  border: dashed;
+  background-color: white;
+  opacity: 0.6;
+  font-family: arial;
+  color: #708090;
+}
+
+section {
+  display: inline-block;
+  vertical-align: top;
+  border: solid;
+  margin: 10px;
+  padding: 5px;
+  max-width: 40%;
+  height: 1500px;
+  font-family: helvetica;
+}
+.column-1 {
+  background-color: magenta;
+}
+
+.column-2 {
+  background-color: lightgreen;
+  color: #9370DB;
+}
+
+footer {
+  border: dashed;
+  background-color: white;
+  font-family: times;
+}
+
+/*Reflect: This GPS helped me feel much more comfortable with css. In particular, using the display and vertical align properties was very helpful. It was great to be able to talk through borders, margin and padding with a cohort member. And we had fun playing around with different elements.*/
