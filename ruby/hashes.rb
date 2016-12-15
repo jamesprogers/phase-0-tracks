@@ -30,11 +30,12 @@ p entries
 
 loop do
   puts "Enter the category of any errors (enter 'none' if no errors)"
-  error = gets.chomp
+  error = gets.chomp.to_s
+  p error
   break if error == "none"
   puts "What error is in the #{error} category?"
     revision = gets.chomp
-    entries[error] << revision
+    entries[error] = revision
 end
 p entries
 
