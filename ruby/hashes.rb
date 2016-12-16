@@ -28,18 +28,27 @@ entries = {
 #Print the hash back out to the screen when the designer has answered all of the questions.
 p entries
 
+#Give the user the opportunity to update a key (no need to loop, once is fine). After all, sometimes users make mistakes! If the designer says "none", skip it. But if the designer enters "decor_theme" (for example), your program should ask for a new value and update the :decor_theme key. (Hint: Strings have methods that will turn them into symbols, which would be quite handy here.) You can assume the user will correctly input a key that exists in your hash -- no need to handle user errors.
+
 loop do
   puts "Enter the category of any errors (enter 'none' if no errors)"
-  error = gets.chomp.to_s
+  error = gets.chomp
   p error
   break if error == "none"
   puts "What error is in the #{error} category?"
-    revision = gets.chomp
-    entries[error] = revision
+  revision = gets.chomp
+  error = error.to_sym
+  entries[error] = revision
 end
+
+#Print the latest version of the hash, and exit the program.
 p entries
+exit
 
 
 
-#Give the user the opportunity to update a key (no need to loop, once is fine). After all, sometimes users make mistakes! If the designer says "none", skip it. But if the designer enters "decor_theme" (for example), your program should ask for a new value and update the :decor_theme key. (Hint: Strings have methods that will turn them into symbols, which would be quite handy here.) You can assume the user will correctly input a key that exists in your hash -- no need to handle user errors.
-#Print the latest version of the hash, and exit the program. =end
+
+
+
+
+
