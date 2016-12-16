@@ -1,7 +1,7 @@
 # write your own method that takes a block. Your method should print out a status message before
 #and after running the block. Your block doesn't have to do anything fancy --
 #it can just print out several of its own parameters.
-=begin
+
 def hello
   puts "This is the before status message"
   yield("Yoshi", "Freddie")
@@ -54,7 +54,7 @@ end
 
 puts "New best characters: "
 p Character
-=end
+
 
 #Release 2- Array
 #A method that iterates through the items, deleting any that meet a certain condition (for example, deleting any numbers that are less than 5).
@@ -67,7 +67,7 @@ p del_cond
 #A method that filters a data structure for only items that do satisfy a certain condition (for example, keeping any numbers that are less than 5).
 delete_cond = [2, 4, 6, 8, 10]
 delete_cond.keep_if { |numbers| numbers < 5 }
-#delete_cond.delete_if { |numbers| numbers >= 5 }
+#also delete_cond.delete_if { |numbers| numbers >= 5 }
 
 p delete_cond
 
@@ -79,12 +79,12 @@ condition_array.select! { |number| number.even? }
 p condition_array
 
 #A method that will remove items from a data structure until the condition in the block evaluates to false, then stops (you may not find a perfectly working option for the hash, and that's okay).
-letter_array = ["a", "b", "c", "d", "e"]
+num_array = [1, 2, 3, 4, 5]
+
+new_array = num_array.drop_while { |num| num < 3 }
 
 
-letter_array.cycle(2) { |x| puts x.upcase }
-#when
-p letter_array
+p new_array
 
 
 
@@ -115,6 +115,30 @@ letter_array2 = ["a", "b", "c", "d", "e"]
 letter_array2.each do |select|
   p select.clear
 end
+
+letter_array3 = ["a", "b", "c", "d", "e"]
+
+
+loop do
+ p letter_array3.shift
+ p letter_array3
+ break if letter_array3.length == 0
+end
+
+#This also works:
+
+num_array2 = [1, 2, 3, 4, 5, 6]
+
+new_num_array2 = num_array2.drop_while {|let| let < 5}
+p new_num_array2
+
+l_num = { "a" => 1,"e" => 2,"i" => 3,"o" => 4, "u" => 5, "y" => 6}
+
+
+new_lnum = l_num.reject {|k, v| k < "o" }
+#or lum.reject {|k,v| v > 4}
+p new_lnum
+
 
 
 
