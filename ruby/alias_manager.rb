@@ -19,72 +19,47 @@ p vowel[0]
 p vowel[1+1]
 p vowel[vowel.index("a")+1]
 
-vowel.each do |change|
-  p change.index
-end
-
-
-name_array2 = name.chars
-
-
-
-
-Scratchpad:
-
-while char_name[name_index] != consonant[con_index]
-    con_index += 1
-  end
-  if consonant[con_index] == "z"
-  name[name_index] = "b"
-  else
-    name[name_index] = consonant[con_index +1]
-  end
-
-  def change_vowel(char_name)
-  vowel = "aeiou"
-  vowel = vowel.chars
-
-  name_index = 0
+def change_vowel(char_name)
   while name_index < char_name.length
     vowel_index = 0
     while char_name[name_index] != vowel[vowel_index]
       vowel_index += 1
     end
     if vowel[vowel_index] == "u"
-      name[name_index] = "a"
+      char_name[name_index] = "a"
     else
-      name[name_index] = vowel[vowel_index +1]
+      char_name[name_index] = vowel[vowel_index +1]
     end
   name_index += 1
   end
 end
 
-p array_name = name.downcase.chars
+name_array2 = name.chars
 
-p change_vowel("felicia")
-
-
-
-=begin
-  con_index = 0
-
-  while char_name[name_index] != consonant[con_index]
-    con_index += 1
-  end
-  if consonant[con_index] == "z"
-  name[name_index] = "b"
-  else
-    name[name_index] = consonant[con_index +1]
-  end
-
-  name_index += 1
-end
-
+#create consonant array
 
 consonant = "abcdefghijklmnopqrstuvwxyz"
 p consonant = consonant.chars
 p consonant = consonant - vowel
 
+#create method for changing consonants
+
+def con_change(char_name2)
+con_index = 0
+  while char_name2[name_index2] != consonant[con_index]
+    con_index += 1
+  end
+  if consonant[con_index] == "z"
+  char_name2[name_index2] = "b"
+  else
+    char_name2[name_index2] = consonant[con_index +1]
+  end
+  name_index2 += 1
+end
+
+p array_name = name.downcase.chars
+
+p change_vowel("felicia")
 
 
 p char_name.length
