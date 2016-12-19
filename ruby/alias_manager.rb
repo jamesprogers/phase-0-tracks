@@ -18,28 +18,30 @@ p vowel = vowel.chars
 p vowel[0]
 p vowel[1+1]
 p vowel[vowel.index("a")+1]
+p "end"
 
-
-def change_vowel(array_name)
-  array_name2 = []
+def change_vowel(char_name)
+  char_name = char_name.chars
+  new_array = []
   vowel = "aeiou"
   vowel = vowel.chars
-  array_name = array_name.chars
-  array_name.each do |vowel_search|
+  char_name.each do |char_search|
     vowel_index = 0
     while vowel_index < vowel.length
-      if vowel_search == "u"
-        array_name2 << "a"
-      elsif vowel_search == vowel[vowel_index]
-        array_name2 << vowel[vowel_index +1]
-      else array_name2 << vowel_search
+      if vowel[vowel_index] == char_search
+        if vowel[vowel_index] == "u"
+          new_array << "a"
+        else new_array << vowel[vowel_index+1]
+        end
+      else vowel_index += 1
       end
-    vowel_index += 1
+      new_array << char_search
     end
   end
-  return array_name2
-  p array_name2
+  p new_array
 end
 
-p change_vowel("aje")
+change_vowel("ewi")
+
+#I've been struggling with this for several days. I'm going to submit it as is to make the deadline and continue working on it this week.
 
