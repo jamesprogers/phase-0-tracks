@@ -21,6 +21,7 @@ p vowel[vowel.index("a")+1]
 
 
 def change_vowel(array_name)
+  array_name2 = []
   vowel = "aeiou"
   vowel = vowel.chars
   array_name = array_name.chars
@@ -28,16 +29,17 @@ def change_vowel(array_name)
     vowel_index = 0
     while vowel_index < vowel.length
       if vowel_search == "u"
-        vowel_search = "a"
+        array_name2 << "a"
       elsif vowel_search == vowel[vowel_index]
-        vowel_search = vowel[vowel_index +1]
-      else vowel_search = vowel_search
+        array_name2 << vowel[vowel_index +1]
+      else array_name2 << vowel_search
       end
-      vowel_index += 1
+    vowel_index += 1
     end
   end
-  return array_name
+  return array_name2
+  p array_name2
 end
 
-p change_vowel("fulicia")
+p change_vowel("aje")
 
