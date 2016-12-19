@@ -13,55 +13,31 @@ p rev_name_array = name_array.reverse
 vowel = "aeiou"
 p vowel = vowel.chars
 
-#create method of changing vowel
+#create method of changing vowel. Compare each letter in the code, which has been converted to an array, to each character in the vowel array and when they match, advance the character in the code by one in the vowel array. Do this once
 
 p vowel[0]
 p vowel[1+1]
 p vowel[vowel.index("a")+1]
 
-def change_vowel(char_name)
-  while name_index < char_name.length
+
+def change_vowel(array_name)
+  vowel = "aeiou"
+  vowel = vowel.chars
+  array_name = array_name.chars
+  array_name.each do |vowel_search|
     vowel_index = 0
-    while char_name[name_index] != vowel[vowel_index]
+    while vowel_index < vowel.length
+      if vowel_search == "u"
+        vowel_search = "a"
+      elsif vowel_search == vowel[vowel_index]
+        vowel_search = vowel[vowel_index +1]
+      else vowel_search = vowel_search
+      end
       vowel_index += 1
     end
-    if vowel[vowel_index] == "u"
-      char_name[name_index] = "a"
-    else
-      char_name[name_index] = vowel[vowel_index +1]
-    end
-  name_index += 1
   end
+  return array_name
 end
 
-name_array2 = name.chars
+p change_vowel("fulicia")
 
-#create consonant array
-
-consonant = "abcdefghijklmnopqrstuvwxyz"
-p consonant = consonant.chars
-p consonant = consonant - vowel
-
-#create method for changing consonants
-
-def con_change(char_name2)
-con_index = 0
-  while char_name2[name_index2] != consonant[con_index]
-    con_index += 1
-  end
-  if consonant[con_index] == "z"
-  char_name2[name_index2] = "b"
-  else
-    char_name2[name_index2] = consonant[con_index +1]
-  end
-  name_index2 += 1
-end
-
-p array_name = name.downcase.chars
-
-p change_vowel("felicia")
-
-
-p char_name.length
-
-=end
