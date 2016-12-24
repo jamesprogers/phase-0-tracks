@@ -30,7 +30,7 @@ def add_item(list, new_item, opt_quant)
     opt_quant = 2
   end
   list_hash[new_item] = opt_quant
-  "#{list_hash}"
+  return list_hash
 end
 
 
@@ -41,15 +41,12 @@ end
 # output: Print the updated list.
 
 def remove_item(list, item)
-  list_hash = list_create(list)
+  list_hash = list
   if list_hash.keys.include?(item)
     list_hash.delete(item)
   end
-  "#{list_hash}"
+  return list_hash
 end
-
-
-
 
 # Method to update the quantity of an item
 # input: list, item to be updated and the new item quantity
@@ -57,7 +54,7 @@ end
 # output: Print the updated list.
 
 def update_quant(list, item_key, quant_update)
-  list_hash = list_create(list)
+  list_hash = list
   new_hash = {}
   new_hash[item_key] = quant_update
   list_hash.merge(new_hash) {|item_key, old_quant, quant_update| quant_update}
@@ -69,7 +66,7 @@ end
 # steps: print the hash with language saying "this is our grocery list: ". Print each value and then print each key next to each value. Example: "2 carrots, 3 potatoes, etc..."
 # output: Print the updated list in a readable format.
 def print_list(list)
-  list_hash = list_create(list)
+  list_hash = list
   puts "This is our grocery list: "
   list_hash.each do |item_key, quant_value|
     puts "#{item_key}: #{quant_value}"
@@ -78,22 +75,20 @@ end
 
 
 
-
-
-
 p list_create("carrots apples cereal pizza")
 
-p add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2}, "Lemonade", 2)
+
 p add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2)
 
-p add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2}, "Tomatoes", 3)
+
 p add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3)
 
+p add_item(add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3), "Onions", 1)
 
-add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3}, "Onions", 1)
-add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3, "Ice Cream"=>4})
-remove_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3, "Ice Cream"=>4}, "Lemonade")
-update_quant({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Tomatoes"=>3, "Ice Cream"=>4},"Ice Cream", 1)
-print_list({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Tomatoes"=>3, "Ice Cream"=>1})
+p add_item(add_item(add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3), "Onions", 1), "Ice Cream", 4)
 
+p remove_item(add_item(add_item(add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3), "Onions", 1), "Ice Cream", 4), "Lemonade")
 
+p update_quant(remove_item(add_item(add_item(add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3), "Onions", 1), "Ice Cream", 4), "Lemonade"),"Ice Cream", 1)
+
+print_list(update_quant(remove_item(add_item(add_item(add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3), "Onions", 1), "Ice Cream", 4), "Lemonade"),"Ice Cream", 1))
