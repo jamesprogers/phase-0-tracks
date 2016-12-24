@@ -14,69 +14,86 @@ def list_create(list_item)
     list_hash[key_convert] = default_value
   end
   return list_hash
-  "This is the list #{list_hash}"
 end
 
-p list_create("carrots apples cereal pizza")
+
 
 # Method to add an item to a list
-# input: list, item name, and optional quantity
+# input: list hash, item name, and optional quantity
 # steps: create a method by using list as a hash, item name as a key and optional quantity as a value. To add an item, we add it as a key. To add a key, we pass the string of the list item through as a parameter for generating a new key and the optional quantity as the value. If no value is provided, the value will be the default value.
 # output: This adds a new key with a new value. The value is either the optional quantity entered or, if no quantity entered, the default value. Print the updated list.
 
-def add_item(new_item, opt_quant)
-  list_hash = list_create("carrots apples cereal pizza")
+
+def add_item(list, new_item, opt_quant)
+  list_hash = list
   if opt_quant == nil
     opt_quant = 2
   end
   list_hash[new_item] = opt_quant
-  "This is the list #{list_hash}"
+  "#{list_hash}"
 end
 
-p add_item("water", 3)
-p add_item("beer", nil)
+
 
 # Method to remove an item from the list
-# input: item to be removed.
+# input: list, item to be removed.
 # steps: List the item to be remove, use a command that removes the key from the hash, which would remove any values associated with the key.
 # output: Print the updated list.
 
-def remove_item(item)
-  list_hash = list_create("carrots apples cereal pizza")
+def remove_item(list, item)
+  list_hash = list_create(list)
   if list_hash.keys.include?(item)
     list_hash.delete(item)
   end
-  "The updated list is #{list_hash}"
+  "#{list_hash}"
 end
 
-p remove_item("carrots")
+
 
 
 # Method to update the quantity of an item
-# input: item and item quantity
+# input: list, item to be updated and the new item quantity
 # steps: Create a method using the item and quantity as parameters. Locate the key parameter within the hash and replace the existing value associated with that key with the new quantity value. (Example: Change quantity of carrots from 2 to 3)
 # output: Print the updated list.
 
-def update_quant(item_key, quant_update)
-  list_hash = list_create("carrots apples cereal pizza")
+def update_quant(list, item_key, quant_update)
+  list_hash = list_create(list)
   new_hash = {}
   new_hash[item_key] = quant_update
   list_hash.merge(new_hash) {|item_key, old_quant, quant_update| quant_update}
 end
 
-p update_quant("carrots", 3)
 
 # Method to print a list and make it look pretty
 # input: the most up-to-date list
 # steps: print the hash with language saying "this is our grocery list: ". Print each value and then print each key next to each value. Example: "2 carrots, 3 potatoes, etc..."
 # output: Print the updated list in a readable format.
-def print_list
-  list_hash = list_create("carrots apples cereal pizza")
+def print_list(list)
+  list_hash = list_create(list)
   puts "This is our grocery list: "
   list_hash.each do |item_key, quant_value|
     puts "#{item_key}: #{quant_value}"
   end
 end
 
-print_list
+
+
+
+
+
+p list_create("carrots apples cereal pizza")
+
+p add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2}, "Lemonade", 2)
+p add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2)
+
+p add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2}, "Tomatoes", 3)
+p add_item(add_item(list_create("carrots apples cereal pizza"), "Lemonade", 2), "Tomatoes", 3)
+
+
+add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3}, "Onions", 1)
+add_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3, "Ice Cream"=>4})
+remove_item({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Lemonade"=>2, "Tomatoes"=>3, "Ice Cream"=>4}, "Lemonade")
+update_quant({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Tomatoes"=>3, "Ice Cream"=>4},"Ice Cream", 1)
+print_list({"carrots"=>2, "apples"=>2, "cereal"=>2, "pizza"=>2, "Tomatoes"=>3, "Ice Cream"=>1})
+
 
