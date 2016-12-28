@@ -26,7 +26,7 @@ end
 
 def add_item(list, new_item, opt_quant)
   list_hash = list
-  if opt_quant == nil
+  if opt_quant == nil || opt_quant == 0
     opt_quant = 2
   end
   list_hash[new_item] = opt_quant
