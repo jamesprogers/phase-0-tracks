@@ -18,7 +18,7 @@ class VirusPredictor
     @state = state_of_origin
     @population = population
     @population_density = population_density
-    @range = 0
+    @range = 0.5
   end
 
   #calls two methods: predicted deaths and speed of spread with the respective attributes as parameters
@@ -33,22 +33,31 @@ class VirusPredictor
   #make user experience simpler, makes interface simpler, makes code less complicated, protect private data
   private
 
+  def range
+    if @population_density >= 200
+      @range = 1.0
+    elsif @population_density >= 150
+      @range = 2.0
+    elsif @population_density >= 100
+      @range = 3.0
+    elsif @population_density >= 50
+      @range = 4.0
+    else
+      @range = 5.0
+    end
+  end
+
   #this is a private method.
   #calculates predicted deaths using population density, population, and prints that data with the state. Uses if statements
   #for differences in the calculations and rounds the calculations down.
   def predicted_deaths
     # predicted deaths is solely based on population density
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density >= 150
-      number_of_deaths = (@population * 0.3).floor
-    elsif @population_density >= 100
-      number_of_deaths = (@population * 0.2).floor
-    elsif @population_density >= 50
-      number_of_deaths = (@population * 0.1).floor
-    else
-      number_of_deaths = (@population * 0.05).floor
+    range
+    if range != 5.0
+      number_of_deaths = (@population * (0.5-(@range/10.0))).floor
+    else number_of_deaths = (@population * (@range/100)).floor
     end
+
 
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
 
@@ -60,19 +69,8 @@ class VirusPredictor
   def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
-
-    if @population_density >= 200
-      speed = 0.5
-    elsif @population_density >= 150
-      speed = 1
-    elsif @population_density >= 100
-      speed = 1.5
-    elsif @population_density >= 50
-      speed = 2
-    else
-      speed = 2.5
-    end
+    range
+    speed = 0.5*@range
 
     puts " and will spread across the state in #{speed} months.\n\n"
 
@@ -80,19 +78,12 @@ class VirusPredictor
 
 # for every decrease of 50 people, speed reduces by 0.5
 # x = -50. y = 0.5. For each x:y 2*x, 2*y
-  def range
-    if @population_density >= 200
-      @range = 0
-    elsif @population_density >= 150
-      @range = 1
-    elsif @population_density >= 100
-      @range = 2
-    elsif @population_density >= 50
-      @range = 3
-    else
-      @range = 4
-    end
-  end
+# 0.5 = 0.4 --> 1 : -.1 --> A : -.A
+# 1.0 = 0.3 --> 2 : -.2 --> A : -.A
+# 1.5 = 0.2 --> 3 : -.3 --> A : -.A
+# 2.0 = 0.1 --> 4 : -.4 --> A : -.A
+# 2.5 = 0.05 --> 5 : -.45 --> A : -(.A-.0A)
+
 end
 
 #=======================================================================
