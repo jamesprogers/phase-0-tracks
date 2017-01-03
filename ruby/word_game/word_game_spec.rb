@@ -5,7 +5,8 @@ describe Word_Game do
   let(:test_game2) { Word_Game.new }
 
   it "enters a word" do
-    expect(test_game2.generate("got").to eq ("got")
+    test_game2.word = "got"
+    expect(test_game.arr_generator). to eq (["g","o","t"])
   end
 
 

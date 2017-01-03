@@ -34,10 +34,6 @@ class Word_Game
     @all_letters = []
   end
 
-  def generator
-    @word = gets.chomp
-  end
-
   def arr_generator
     @word_arr = @word.chars
   end
@@ -121,7 +117,7 @@ puts "Time to play the Word Game!"
 test_game = Word_Game.new
 
 puts "User 1, please enter a word:"
-test_game.generator
+test_game.word= gets.chomp
 puts "-"*10000
 test_game.arr_generator
 test_game.hidden_word
