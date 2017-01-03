@@ -1,14 +1,16 @@
 class TodoList
 
-def get_items
-  list = ["do the dishes", "mow the lawn"]
-  list
-end
+  def initialize(item1, item2)
+    @list = [item1, item2]
+  end
 
-def add_item(item)
-  list = ["do the dishes", "mow the lawn"]
-  list << item
-  return list
-end
+  def get_items
+    @list
+  end
+
+  def add_item(item)
+    @list << item
+    return @list
+  end
 
 end
