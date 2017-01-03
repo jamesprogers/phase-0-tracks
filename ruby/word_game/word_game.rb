@@ -43,8 +43,7 @@ class Word_Game
     return @hidden_word
   end
 
-  def guess
-    @letter = gets.chomp
+  def guess_arr
     @letter_arr = letter.chars
   end
 
@@ -97,6 +96,7 @@ class Word_Game
       end
       word_index += 1
     end
+    return @counter
   end
 
   def game_status
@@ -128,7 +128,8 @@ puts "You have #{test_game.counter_generator} attempts. This is twice the number
 
 until test_game.counter_up > test_game.counter_generator
   puts "User 2, please enter a letter:"
-  test_game.guess
+  test_game.letter= gets.chomp
+  test_game.guess_arr
   test_game.rewind_check
   test_game.letter_place
   test_game.hash_converter
