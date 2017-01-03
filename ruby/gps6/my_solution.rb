@@ -24,6 +24,7 @@ class VirusPredictor
   #calls two methods: predicted deaths and speed of spread with the respective attributes as parameters
 
   def virus_effects
+    range
     predicted_deaths
     speed_of_spread
   end
@@ -52,8 +53,7 @@ class VirusPredictor
   #for differences in the calculations and rounds the calculations down.
   def predicted_deaths
     # predicted deaths is solely based on population density
-    range
-    if range != 5.0
+    if @range != 5.0
       number_of_deaths = (@population * (0.5-(@range/10.0))).floor
     else number_of_deaths = (@population * (@range/100)).floor
     end
@@ -69,7 +69,6 @@ class VirusPredictor
   def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    range
     speed = 0.5*@range
 
     puts " and will spread across the state in #{speed} months.\n\n"
@@ -78,10 +77,10 @@ class VirusPredictor
 
 # for every decrease of 50 people, speed reduces by 0.5
 # x = -50. y = 0.5. For each x:y 2*x, 2*y
-# 0.5 = 0.4 --> 1 : -.1 --> A : -.A
-# 1.0 = 0.3 --> 2 : -.2 --> A : -.A
-# 1.5 = 0.2 --> 3 : -.3 --> A : -.A
-# 2.0 = 0.1 --> 4 : -.4 --> A : -.A
+# 200: 0.5 = 0.4 --> 1 : -.1 --> A : -.A
+# 150: 1.0 = 0.3 --> 2 : -.2 --> A : -.A
+# 100: 1.5 = 0.2 --> 3 : -.3 --> A : -.A
+# 50: 2.0 = 0.1 --> 4 : -.4 --> A : -.A
 # 2.5 = 0.05 --> 5 : -.45 --> A : -(.A-.0A)
 
 end
@@ -104,3 +103,22 @@ end
 #=======================================================================
 # Reflection Section
 
+#What are the differences between the two different hash syntaxes shown in the state_data file?
+
+#One syntax uses a string as a key and the other uses the : symbol to denote the key.
+
+#What does require_relative do? How is it different from require?
+
+#require_relative references a local file that is the source of the methods called in the rspec tests. The require function has more general properties and can call gems and other more remote pieces of information to be used in a program.
+
+#What are some ways to iterate through a hash?
+
+#You can iterate through a hash using the .each method. You can also use the .each_key or .each_value to return those two items respectively
+
+#When refactoring virus_effects, what stood out to you about the variables, if anything?
+
+#the variables had attributes for parameters. This doesn't make sense because attributes don't need to be input as parameters for methods in the same class. They are already set in the initialization of the instance.
+
+#What concept did you most solidify in this challenge?
+
+#The concept of refactoring and reviewing code for redundancies to make it more DRY.
