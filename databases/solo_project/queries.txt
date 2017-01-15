@@ -1,0 +1,80 @@
+
+SELECT * FROM sailboats
+
+1|1|Camelot|TRUE|1
+2|1|Sooner|FALSE|1
+3|2|Big Boat|TRUE|2
+4|4|Sweet Pea|TRUE|4
+5|3|Yoshi|FALSE|3
+
+UPDATE boat_type SET length=35 WHERE type="J109";
+
+1|J24|24
+2|J109|35
+3|Swan42|42
+4|Melges32|32
+
+SELECT * FROM sailboats, boat_type WHERE sailboats.type_id = boat_type.id;
+
+1|1|Camelot|TRUE|1|1|J24|24
+2|1|Sooner|FALSE|1|1|J24|24
+3|2|Big Boat|TRUE|2|2|J109|35
+4|4|Sweet Pea|TRUE|4|4|Melges32|32
+5|3|Yoshi|FALSE|3|3|Swan42|42
+
+SELECT name, boat_type.type, boat_type.length FROM sailboats JOIN boat_type ON sailboats.length_id = boat_type.id;
+
+Camelot|J24|24
+Sooner|J24|24
+Big Boat|J109|35
+Sweet Pea|Melges32|32
+Yoshi|Swan42|42
+
+
+DELETE FROM sailboats WHERE name="Yoshi";
+
+1|1|Camelot|TRUE|1
+2|1|Sooner|FALSE|1
+3|2|Big Boat|TRUE|2
+4|4|Sweet Pea|TRUE|4
+
+Release 3:
+There are 3 kinds of joins supported by sqlite:
+
+INNER JOIN: returns all rows from multiple tables where the join condition is met (this is the default join so "INNER" isn't necessary)
+
+LEFT OUTER JOIN: returns all rows from the lefthand table specified in the on condition and only those rows from the other table where the table joined fields are equal ('OUTER' isn't necessary in the syntax).
+
+CROSS JOIN: matches and returns all rows and all columns from both tables
+
+Uses of joins:
+
+SELECT name, spinnaker FROM sailboats CROSS JOIN boat_type;
+
+Camelot|TRUE
+Camelot|TRUE
+Camelot|TRUE
+Camelot|TRUE
+Sooner|FALSE
+Sooner|FALSE
+Sooner|FALSE
+Sooner|FALSE
+Big Boat|TRUE
+Big Boat|TRUE
+Big Boat|TRUE
+Big Boat|TRUE
+Sweet Pea|TRUE
+Sweet Pea|TRUE
+Sweet Pea|TRUE
+Sweet Pea|TRUE
+
+
+SELECT sailboats.name, boat_type.type, sailboats.spinnaker FROM boat_type LEFT JOIN sailboats ON sailboats.length_id = boat_type.id;
+
+Camelot|J24|TRUE
+Sooner|J24|FALSE
+Big Boat|J109|TRUE
+|Swan42|
+Sweet Pea|Melges32|TRUE
+
+Note that my JOIN and LEFT JOIN are equal because all of rows in boat_types are references in sailboats.
