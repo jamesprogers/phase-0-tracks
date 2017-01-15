@@ -1,0 +1,39 @@
+
+SELECT * FROM sailboats
+
+1|1|Camelot|TRUE|1
+2|1|Sooner|FALSE|1
+3|2|Big Boat|TRUE|2
+4|4|Sweet Pea|TRUE|4
+5|3|Yoshi|FALSE|3
+
+UPDATE boat_type SET length=35 WHERE type="J109";
+
+1|J24|24
+2|J109|35
+3|Swan42|42
+4|Melges32|32
+
+SELECT * FROM sailboats, boat_type WHERE sailboats.type_id = boat_type.id;
+
+1|1|Camelot|TRUE|1|1|J24|24
+2|1|Sooner|FALSE|1|1|J24|24
+3|2|Big Boat|TRUE|2|2|J109|35
+4|4|Sweet Pea|TRUE|4|4|Melges32|32
+5|3|Yoshi|FALSE|3|3|Swan42|42
+
+SELECT name, boat_type.type, boat_type.length FROM sailboats JOIN boat_type ON sailboats.length_id = boat_type.id;
+
+Camelot|J24|24
+Sooner|J24|24
+Big Boat|J109|35
+Sweet Pea|Melges32|32
+Yoshi|Swan42|42
+
+
+DELETE FROM sailboats WHERE name="Yoshi";
+
+1|1|Camelot|TRUE|1
+2|1|Sooner|FALSE|1
+3|2|Big Boat|TRUE|2
+4|4|Sweet Pea|TRUE|4
