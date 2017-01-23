@@ -25,3 +25,14 @@ post '/students' do
 end
 
 # add static resources
+
+# add a search feature
+
+get '/search/id' do
+  erb :release_1
+end
+
+get '/search/' do
+  @result = db.execute("SELECT * FROM students WHERE id=?", [params['id'].to_i])[0]
+  "The student's name is #{@result["name"]} and they are going to the #{@result["campus"]} campus."
+end
